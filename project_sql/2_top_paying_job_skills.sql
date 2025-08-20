@@ -20,13 +20,15 @@ ORDER BY salary_year_avg DESC
 
 )
 
-SELECT s2.skills,COUNT(j.job_id) AS job_per_skills,
+SELECT s2.skills,COUNT(j.job_id) AS demand_count,
 AVG(j.salary_year_avg) AS Avg_Salary 
 FROM top_paying_jobs j
 INNER JOIN skills_job_dim s ON j.job_id = s.job_id
 INNER JOIN skills_dim s2 ON s.skill_id = s2.skill_id
 GROUP BY s2.skills
-ORDER BY Avg_Salary DESC
+ORDER BY Avg_Salary DESC,
+demand_count DESC
+
 
 /*General Statistics
 
